@@ -27,5 +27,9 @@ import {BaseTool} from './base-tool.js';
 export class TestingTool extends BaseTool {
     static get key() {
         return 'testing-tool';
+	}
+	 override async runTool(compilationInfo: Record<any, any>, inputFilepath?: string, args?: string[]) {
+        return super.runTool(compilationInfo, compilationInfo.outputFilename, args);
     }
 }
+
