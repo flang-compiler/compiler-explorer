@@ -28,8 +28,26 @@ export class TestingTool extends BaseTool {
     static get key() {
         return 'testing-tool';
 	}
-	 override async runTool(compilationInfo: Record<any, any>, inputFilepath?: string, args?: string[]) {
-        return super.runTool(compilationInfo, compilationInfo.outputFilename, args);
-    }
+override async runTool(
+  compilationInfo: Record<any, any>,
+  inputFilepath?: string,
+  args?: string[],
+  stdin?: string
+) {
+  console.log('Running the tool...');
+  console.log(`compilationInfo: ${compilationInfo}`);
+  if (inputFilepath !== undefined) {
+    console.log(`inputFilepath: ${inputFilepath}`);
+  }
+  if (args !== undefined) {
+    console.log(`args: ${args}`);
+  }
+  if (stdin !== undefined) {
+    console.log(`stdin: ${stdin}`);
+  }
+
+  return super.runTool(compilationInfo, compilationInfo.outputFilename, args, stdin);
+}
+
 }
 
